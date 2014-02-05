@@ -6,7 +6,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 
-<head>
+<h:head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/main.css"/>
 <link rel="stylesheet" type="text/css" media="all" href="#{facesContext.externalContext.requestContextPath}/css/mobile.css"/>
@@ -35,9 +36,10 @@ jQuery(function($){
 
 <title>Varjão - Clipping</title>
 
-</head>
+</h:head>
 
-<body>
+<h:body>
+
 <div class="mask"></div>
 <div class="site-wrapper"> 
   <!--INÍCIO DO INCLUDE NA ÁREA DE CLIPPING COM USUÁRIO AUTENTICADO-->
@@ -109,25 +111,12 @@ jQuery(function($){
         <div class="widget-arrow"><img src="#{facesContext.externalContext.requestContextPath}/images/arrow.png" border="0"/></div>
       </div>
       
-      <h:form styleClass="busca-avancada" id="form" prependId="false">
+      <h:form styleClass="busca-avancada" prependId="false" id="formPesquisa">
       	
       	<p:growl showDetail="true" sticky="false" life="3000" showSummary="false"/>
       	
-      	<p:outputPanel autoUpdate="true">
-		
-		<script type="text/javascript">
-	         $('#dataPublicacaoInicial').attr('placeholder','DATA INICIAL');
-	    </script>
-	    <script type="text/javascript">
-	         $('#dataPublicacaoFinal').attr('placeholder','DATA FINAL');
-	    </script>
-	    <script type="text/javascript">
-	         $('#chamada').attr('placeholder','CHAMADA');
-	    </script>
-	    <script type="text/javascript">
-	         $('#titulo').attr('placeholder','TÍTULO');
-	    </script>
-	    	
+      	<p:outputPanel id="otpPesquisa">
+			
   		<div class="field-container">
           <div class="field-wrapper">
             <div class="radio-btn"></div>
@@ -175,10 +164,23 @@ jQuery(function($){
           </div>
         </div>
         
-        <h:commandButton action="#{clippingFaces.findEvent}" value="pesquisar" styleClass="botao-pesquisar"/>
-        
+        <script type="text/javascript">
+	         $('#dataPublicacaoInicial').attr('placeholder','DATA INICIAL');
+	    </script>
+	    <script type="text/javascript">
+	         $('#dataPublicacaoFinal').attr('placeholder','DATA FINAL');
+	    </script>
+	    <script type="text/javascript">
+	         $('#chamada').attr('placeholder','CHAMADA');
+	    </script>
+	    <script type="text/javascript">
+	         $('#titulo').attr('placeholder','TÍTULO');
+	    </script>
+	    
+	    <h:commandButton action="#{clippingFaces.findEvent}" value="pesquisar" styleClass="botao-pesquisar"/>
+	    
         </p:outputPanel>
-	  	  
+          
       </h:form>
       
       <div class="bem-vindo-wrapper">
@@ -726,6 +728,6 @@ jQuery(function($){
   
 </div>
 
-</body>
+</h:body>
 
 </html>

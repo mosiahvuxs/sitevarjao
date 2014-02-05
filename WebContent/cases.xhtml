@@ -1,9 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="../css/main.css"/>
-<link rel="stylesheet" type="text/css" media="all" href="../css/mobile.css"/>
+<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/main.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="#{facesContext.externalContext.requestContextPath}/css/mobile.css"/>
 <!--[if gte IE 9]>
   <style type="text/css">
     .gradient {
@@ -14,9 +19,9 @@
 <title>Varjão - Cases de Sucesso</title>
 </head>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="../scripts/submenu-quem-somos-habilita-clientes.js"></script>
-<script src="../scripts/submenu-atuacao-habilita-clientes.js"></script>
-<script src="../scripts/submenu-clientes-visivel.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/scripts/submenu-quem-somos-habilita-clientes.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/scripts/submenu-atuacao-habilita-clientes.js"></script>
+<script src="#{facesContext.externalContext.requestContextPath}/scripts/submenu-clientes-visivel.js"></script>
 <body>
 <div class="site-wrapper"> 
   <!--INÍCIO DO INCLUDE NA HOME-->
@@ -26,7 +31,7 @@
     <div class="sombra-topo-direita"></div>
   </div>
   <div class="header">
-    <div class="logo"><a href="../index.xhtml"><img src="../images/logo.png" border="0"/></a></div>
+    <div class="logo"><a href="#{facesContext.externalContext.requestContextPath}/index.xhtml"><img src="#{facesContext.externalContext.requestContextPath}/images/logo.png" border="0"/></a></div>
     <menu>
     <div class="menu-wrapper">
       <div class="item-menu-quem-somos"><a href="#">QUEM SOMOS</a></div>

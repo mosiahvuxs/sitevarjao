@@ -12,7 +12,7 @@
 
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>overcast</param-value>
+		<param-value>redmond</param-value>
 	</context-param>
 	<welcome-file-list>
 		<welcome-file>/index.xhtml</welcome-file>

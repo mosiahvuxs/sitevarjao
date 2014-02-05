@@ -5,7 +5,9 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-<head>
+
+<h:head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/main.css"/>
 <link rel="stylesheet" type="text/css" media="all" href="#{facesContext.externalContext.requestContextPath}/css/mobile.css"/>
@@ -22,9 +24,11 @@
   </style>
 <![endif]-->
 <title>Varjão - Clipping</title>
-</head>
 
-<body>
+</h:head>
+
+<h:body>
+
 <div class="site-wrapper"> 
   <!--INÍCIO DO INCLUDE NA ÁREA DE LOGIN DO CLIPPING-->
   <div class="barra-topo"></div>
@@ -97,14 +101,32 @@
       </div>
       <!--ÁREA DO LOGIN - IMPORTANTE-->
       <div id="login-wrapper">
-        <form id="login" action="logado.xhtml" method="post">
-          <input class="login" type="text" placeholder="DIGITE E-MAIL LOGIN" autocomplete="on"/>
-          <div id="cadeado"></div>
-          <input class="senha" type="password" placeholder="SENHA"/>
-          <input class="botao-login" type="submit" value="LOGIN"/>
-          <div class="clear"></div>
-        </form>
+      
+      	<h:form id="login" prependId="false">
+			
+			<p:growl showDetail="true" sticky="false" life="3000" showSummary="false"/>
+			
+		    <h:inputText  value="#{loginFaces.cliente.autenticacao.login}" id="textLogin" styleClass="login"/>
+			
+			<div id="cadeado"></div>
+			
+			<h:inputSecret value="#{loginFaces.cliente.autenticacao.senha}" id="textSenha" styleClass="senha"/>
+			
+			<h:commandButton action="#{loginFaces.autenticar}" value="LOGIN" styleClass="botao-login"/>
+			
+			<script type="text/javascript">
+		         $('#textLogin').attr('placeholder','DIGITE O LOGIN');
+		    </script> 
+		    <script type="text/javascript">
+		         $('#textSenha').attr('placeholder','SENHA');
+		    </script> 
+		    
+			<div class="clear"></div>
+          
+        </h:form>
+        
         <div class="clear"></div>
+        
       </div>
       <div class="clear"></div>
     </div>
@@ -145,5 +167,7 @@
     <div class="endereco">Av. Tancredo Neves, 909, Ed. André Guimarães Business Center, Salas 1104 e 1105, CEP 41820-021, Salvador, Bahia, (71) 3444-6800, www.varjao.com</div>
   </footer>
 </div>
-</body>
+
+</h:body>
+
 </html>
