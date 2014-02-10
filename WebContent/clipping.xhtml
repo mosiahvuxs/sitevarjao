@@ -198,42 +198,53 @@ jQuery(function($){
     <div class="sombra-direita"></div>
   </div>
   
+  <h:form id="formClipping" prependId="false">
+  
   <div class="content-clipping-wrapper"> 
     
-    <h:form id="formBoxEsquerdo" prependId="false">
+    <p:growl autoUpdate="true" showDetail="true" sticky="false" life="3000" showSummary="false"/>
+    
+    <h:panelGroup id="pgClipping">
+    
     <div class="left-box">
       <div class="box-arrow"></div>
       <div class="box-menu">
-        <div class="item-menu-box-selected">
-        <h:commandLink value="TODAS" action="#{clippingFaces.findEvent}">
+        <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==null ? 'item-menu-box-selected' : 'item-menu-box'}">
+        <h:commandLink  value="TODAS" action="#{clippingFaces.findEvent}" >
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="#{null}" />
+        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
-        <div class="item-menu-box"><h:commandLink value="IMPRESSO" action="#{clippingFaces.findEvent}">
+        <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==3 ? 'item-menu-box-selected' : 'item-menu-box'}">
+        <h:commandLink value="IMPRESSO" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==3 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="3" />
+        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
-        <div class="item-menu-box"><h:commandLink value="RÁDIO" action="#{clippingFaces.findEvent}">
+        <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==1 ? 'item-menu-box-selected' : 'item-menu-box'}">
+        <h:commandLink value="RÁDIO" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==1 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="1" />
+        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
-        <div class="item-menu-box"><h:commandLink value="TV" action="#{clippingFaces.findEvent}">
+        <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==2 ? 'item-menu-box-selected' : 'item-menu-box'}">
+        <h:commandLink value="TV" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==2 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="2" />
+        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
-        <div class="item-menu-box"><h:commandLink value="WEB" action="#{clippingFaces.findEvent}">
+        <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==4 ? 'item-menu-box-selected' : 'item-menu-box'}">
+        <h:commandLink update="pgClipping" value="WEB" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==4 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="4" />
+        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
       </div>
     </div>
-    </h:form>
-    
-    <h:form id="formListagem" prependId="false">
     
     <div class="clipping-listagem-wrapper">
     
@@ -456,10 +467,12 @@ jQuery(function($){
     	</ui:repeat>
     	
     	</div>
+  
+  </h:panelGroup>
     
-    </h:form>
-
   </div>
+  
+  </h:form>
   
   <div class="clear"></div>
   
