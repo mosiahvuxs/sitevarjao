@@ -210,37 +210,32 @@ jQuery(function($){
       <div class="box-arrow"></div>
       <div class="box-menu">
         <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==null ? 'item-menu-box-selected' : 'item-menu-box'}">
-        <h:commandLink  value="TODAS" action="#{clippingFaces.findEvent}" >
+        <h:commandLink value="TODAS" action="#{clippingFaces.findEvent}" >
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="#{null}" />
-        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
         <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==3 ? 'item-menu-box-selected' : 'item-menu-box'}">
         <h:commandLink value="IMPRESSO" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==3 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="3" />
-        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
         <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==1 ? 'item-menu-box-selected' : 'item-menu-box'}">
         <h:commandLink value="RÁDIO" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==1 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="1" />
-        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
         <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==2 ? 'item-menu-box-selected' : 'item-menu-box'}">
         <h:commandLink value="TV" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==2 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="2" />
-        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
         <div class="menu-box-bar"></div>
         <div class="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==4 ? 'item-menu-box-selected' : 'item-menu-box'}">
-        <h:commandLink update="pgClipping" value="WEB" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==4 ? 'text-decoration: none; color: #fff;' : ''}">
+        <h:commandLink value="WEB" action="#{clippingFaces.findEvent}" style="#{clippingFaces.midiaEnvio.midia.tipoMidia.id==4 ? 'text-decoration: none; color: #fff;' : ''}">
         	<f:setPropertyActionListener target="#{clippingFaces.midiaEnvio.midia.tipoMidia.id}" value="4" />
-        	<f:ajax render="pgClipping"/>
         </h:commandLink>
         </div>
       </div>
@@ -250,7 +245,7 @@ jQuery(function($){
     
       <ui:repeat var="item" value="#{clippingFaces.midias}">
     		
-    		<p:outputPanel rendered="#{item.tipoMidia.id==1}">
+    		<p:outputPanel rendered="#{item.tipoMidia.id==1}" autoUpdate="true">
     		<div class="clipping-chamada-wrapper">
 	        <div class="icone-veiculo"><img src="#{facesContext.externalContext.requestContextPath}/images/audio.png" border="0" title="rádio"/></div>
 	        <div class="texto-wrapper">
@@ -303,7 +298,7 @@ jQuery(function($){
 	      	</div>
 	      	</p:outputPanel>
 	      	
-	      	<p:outputPanel rendered="#{item.tipoMidia.id==2}">
+	      	<p:outputPanel rendered="#{item.tipoMidia.id==2}" autoUpdate="true">
     		<div class="clipping-chamada-wrapper">
 	        <div class="icone-veiculo"><img src="#{facesContext.externalContext.requestContextPath}/images/video.png" border="0" title="vídeo"/></div>
 	        <div class="texto-wrapper">
@@ -356,7 +351,7 @@ jQuery(function($){
 	      	</div>
 	      	</p:outputPanel>
     		
-    		<p:outputPanel rendered="#{item.tipoMidia.id==3}">
+    		<p:outputPanel rendered="#{item.tipoMidia.id==3}" autoUpdate="true">
     		<div class="clipping-chamada-wrapper">
 	        <div class="icone-veiculo"><img src="#{facesContext.externalContext.requestContextPath}/images/impresso.png" border="0" title="impresso"/></div>
 	        <div class="texto-wrapper">
@@ -401,9 +396,7 @@ jQuery(function($){
 	            	</div>
 	            </p:outputPanel>
 	            <p:outputPanel rendered="#{!item.arquivoEmDisco}">
-	            	<div class="icone-save">
-	            		<a href="#"><img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" title="Arquivo não encontrado" border="0"/></a>
-	            	</div>
+	            	<div class="icone-save"><a href="#"><img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" title="Arquivo não encontrado" border="0"/></a></div>
 	            </p:outputPanel>
 	          </div>
 	        </div>
@@ -411,7 +404,7 @@ jQuery(function($){
 	      	</div>
 	      	</p:outputPanel>
 	      	
-	      	<p:outputPanel rendered="#{item.tipoMidia.id==4}">
+	      	<p:outputPanel rendered="#{item.tipoMidia.id==4}" autoUpdate="true">
     		<div class="clipping-chamada-wrapper">
 	        <div class="icone-veiculo"><img src="#{facesContext.externalContext.requestContextPath}/images/web.png" border="0" title="web"/></div>
 	        <div class="texto-wrapper">
