@@ -79,7 +79,7 @@ public class ClippingFaces extends TSMainFaces {
 
 		if (!TSUtil.isEmpty(this.getMidiaEnvio().getCliente()) && !TSUtil.isEmpty(this.getMidiaEnvio().getCliente().getId())) {
 
-			if (this.validaData()) {
+			if (this.validaDatas()) {
 
 				this.midias = new MidiaDAO().pesquisar(this.getMidiaEnvio());
 
@@ -108,9 +108,6 @@ public class ClippingFaces extends TSMainFaces {
 
 				TSFacesUtil.gerarResultadoLista(this.midias);
 
-			} else {
-
-				super.addErrorMessage("Data inválida.");
 			}
 
 		} else {
@@ -121,7 +118,7 @@ public class ClippingFaces extends TSMainFaces {
 		return null;
 	}
 
-	private boolean validaData() {
+	private boolean validaDatas() {
 
 		boolean validado = true;
 

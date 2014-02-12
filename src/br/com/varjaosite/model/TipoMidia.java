@@ -2,6 +2,8 @@ package br.com.varjaosite.model;
 
 import java.io.Serializable;
 
+import br.com.topsys.util.TSUtil;
+
 @SuppressWarnings("serial")
 public class TipoMidia implements Serializable {
 
@@ -26,7 +28,7 @@ public class TipoMidia implements Serializable {
 	}
 
 	public Long getId() {
-		return id;
+		return TSUtil.tratarLong(id);
 	}
 
 	public void setId(Long id) {

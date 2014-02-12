@@ -59,7 +59,7 @@ public class ContatoFaces extends TSMainFaces {
 
 		}
 
-		if (TSUtil.isEmpty(TSUtil.tratarString(this.getTelefone())) || this.getTelefone().length() < 16) {
+		if (TSUtil.isEmpty(TSUtil.tratarString(this.getTelefone())) || this.getTelefone().length() < 11) {
 
 			super.addErrorMessage("Telefone: inválido.");
 

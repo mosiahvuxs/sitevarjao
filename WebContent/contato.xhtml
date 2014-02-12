@@ -5,10 +5,11 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-<head>
+<h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/main.css"/>
 <link rel="stylesheet" type="text/css" media="all" href="#{facesContext.externalContext.requestContextPath}/css/mobile.css"/>
+<script src="#{facesContext.externalContext.requestContextPath}/scripts/funcoes.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="#{facesContext.externalContext.requestContextPath}/scripts/submenu-quem-somos.js"></script>
 <script src="#{facesContext.externalContext.requestContextPath}/scripts/submenu-atuacao.js"></script>
@@ -21,9 +22,9 @@
   </style>
 <![endif]-->
 <title>Varjão - Contato</title>
-</head>
+</h:head>
 
-<body>
+<h:body>
 <div class="site-wrapper"> 
   <!--INÍCIO DO INCLUDE NA HOME-->
   <div class="barra-topo"></div>
@@ -105,15 +106,33 @@
         <div class="clear"></div>
       </div>
       <div class="clear"></div>
-      <form id="contato" action="#" method="post">
-        <input class="contato-field" type="text" placeholder="NOME"/>
-        <input class="contato-field" type="text" placeholder="ASSUNTO"/>
-        <input class="contato-field" type="text" placeholder="E-MAIL"/>
-        <input class="contato-field" type="text" placeholder="TELEFONE"/>
-        <textarea id="contato" type="text" placeholder="MENSAGEM"></textarea>
+      
+      <h:form prependId="false" id="contato">
+      	
+      	<p:growl showDetail="true" sticky="false" life="3000" showSummary="false" autoUpdate="true"/>
+        
+        <h:inputText value="#{contatoFaces.nome}" id="nome" styleClass="contato-field"/>
+        <h:inputText value="#{contatoFaces.assunto}" id="assunto" styleClass="contato-field"/>
+        <h:inputText value="#{contatoFaces.email}" id="email" styleClass="contato-field"/>
+        <h:inputText value="#{contatoFaces.telefone}" id="telefone" onblur="Mascara(this,Integer)" onkeypress="Mascara(this,Integer)" maxlength="15" styleClass="contato-field"/>
+        <h:inputTextarea value="#{contatoFaces.mensagem}" id="mensagem"/>
+        
         <div class="clear"></div>
-        <input class="enviar" type="submit" value="Enviar"/>
-      </form>
+        
+        <h:commandButton styleClass="enviar" value="Enviar" action="#{contatoFaces.enviar}">
+        	<f:ajax execute="@form"/>
+      	</h:commandButton>
+      	
+      	<script type="text/javascript">
+	         $('#nome').attr('placeholder','NOME');
+	         $('#assunto').attr('placeholder','ASSUNTO');
+	         $('#email').attr('placeholder','E-MAIL');
+	         $('#telefone').attr('placeholder','TELEFONE');
+	         $('#mensagem').attr('placeholder','MENSAGEM');
+	        </script>
+      	
+      </h:form>
+      
     </div>
     <div class="content-contato-right">
       <div class="mapa">
@@ -130,5 +149,5 @@
     <div class="endereco">Av. Tancredo Neves, 909, Ed. André Guimarães Business Center, Salas 1105 e 1113, CEP 41820-021, Salvador, Bahia, (71) 3444-6800, www.varjao.com</div>
   </footer>
 </div>
-</body>
+</h:body>
 </html>
