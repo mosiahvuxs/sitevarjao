@@ -26,10 +26,15 @@
 </h:head>
 
 <h:body>
- 
-<div class="site-wrapper"> 
 
-  <div class="barra-topo-clipping"></div>
+	<div class="mask"></div>
+	<div class="site-wrapper"> 
+  
+	  <div class="barra-topo"></div>
+	  <div class="sombra-topo-wrapper">
+	    <div class="sombra-topo-esquerda"></div>
+	    <div class="sombra-topo-direita"></div>
+	  </div>
   
   <div class="header">
     <div class="logo"><a href="#{facesContext.externalContext.requestContextPath}/index.xhtml"><img src="#{facesContext.externalContext.requestContextPath}/images/logo.png" border="0"/></a></div>
@@ -85,6 +90,20 @@
     <div class="nome-usuario">${visualizacaoFaces.midia.cliente.nome}</div>
     <div class="icone-bem-vindo"></div>
   </div>
+  <div class="widget-header">
+    <div class="widget-clipping">
+      <div class="widget-content">
+        <div class="widget-icon"><img src="#{facesContext.externalContext.requestContextPath}/images/widget-clipping.png" border="0"/></div>
+        <h:panelGroup rendered="#{empty visualizacaoFaces.midia.cliente.id}">
+        <div class="widget-item"><a href="#{facesContext.externalContext.requestContextPath}/login.xhtml">CLIPPING</a></div>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{!empty visualizacaoFaces.midia.cliente.id}">
+        <div class="widget-item"><a href="#{facesContext.externalContext.requestContextPath}/clipping.xhtml">CLIPPING</a></div>
+        </h:panelGroup>
+        <div class="widget-arrow"><img src="#{facesContext.externalContext.requestContextPath}/images/arrow.png" border="0"/></div>
+      </div>
+  	</div>
+  </div>	    
   <div class="sombra-wrapper-submenu">
       <div class="sombra-esquerda-submenu"></div>
       <div class="sombra-direita-submenu"></div>
@@ -136,7 +155,7 @@
         </p:outputPanel>
         <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
            <div class="icone-save">
-           	<h:commandLink action="#{visualizacaoFaces.download}">
+           	<h:commandLink>
            		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
            	</h:commandLink>
         	</div>
@@ -190,7 +209,7 @@
         </p:outputPanel>
         <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
            <div class="icone-save">
-           	<h:commandLink action="#{visualizacaoFaces.download}">
+           	<h:commandLink>
            		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
            	</h:commandLink>
         	</div>
@@ -208,10 +227,10 @@
 	      <div class="icone-veiculo"><img src="#{facesContext.externalContext.requestContextPath}/images/impresso.png" alt="" border="0" title="impresso"/></div>
 	      <div class="texto-wrapper">
 	          <div class="clipping-chamada-impresso">
-		          <h:commandLink value="#{visualizacaoFaces.midia.tituloFormatado}"/>
+		          <h:commandLink value="#{visualizacaoFaces.midia.tituloFormatado}"><f:ajax/></h:commandLink>
 			  </div>
 	          <div class="clipping-descricao-impresso">
-	          	<h:commandLink value="#{visualizacaoFaces.midia.chamadaFormatada}"/>
+	          	<h:commandLink value="#{visualizacaoFaces.midia.chamadaFormatada}"><f:ajax/></h:commandLink>
           	  </div>
 	      </div>
 	      <div class="right-content-wrapper">
@@ -232,26 +251,29 @@
 	            <p:outputPanel rendered="#{visualizacaoFaces.midia.avaliacao.id==5}">
 	            	<div class="icone-aval"><a href="#"><img src="#{facesContext.externalContext.requestContextPath}/images/conhecimento.png" width="33" height="33" border="0" title="conhecimento"/></a></div>
 	            </p:outputPanel>
-	            <p:outputPanel rendered="#{visualizacaoFaces.midia.arquivoEmDisco}">
-	            	<div class="icone-save">
-	            		<h:commandLink action="#{visualizacaoFaces.download}">
-		            		<img src="#{facesContext.externalContext.requestContextPath}/images/save.png" border="0" title="Salvar"/>
-		            		<f:setPropertyActionListener target="#{visualizacaoFaces.midia}" value="#{visualizacaoFaces.midia}" />
-		            		<p:fileDownload value="#{visualizacaoFaces.file}"/>
-	            		</h:commandLink>
-	            	</div>
-	            </p:outputPanel>
-	            <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">
-	            	<div class="icone-save">
-	            		<a href="#"><img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" title="Arquivo não encontrado" border="0"/></a>
-	            	</div>
-	            </p:outputPanel>
+	            <p:outputPanel rendered="#{visualizacaoFaces.midia.arquivoEmDisco}">   
+		           <div class="icone-save">
+		           	<h:commandLink action="#{visualizacaoFaces.download}">
+		           		<img src="#{facesContext.externalContext.requestContextPath}/images/save.png" border="0"/>
+		           		<p:fileDownload value="#{visualizacaoFaces.file}"/>
+		           	</h:commandLink>
+		        	</div>
+		        </p:outputPanel>
+		        <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
+		           <div class="icone-save">
+		           	<h:commandLink>
+		           		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
+		           	</h:commandLink>
+		        	</div>
+		        </p:outputPanel>
 	          </div>
 	      </div>
-	      
+	      <div class="clear"></div>
 	    </div>
+	    <div class="clear"></div>
 	  </div>
-	  <div class="modal-impresso">
+	  
+  		<div class="modal-impresso">
 	    
 	    <div class="botao-fechar">X</div>
 	    
@@ -293,33 +315,24 @@
 	            </p:outputPanel>
             </div>
 	        <p:outputPanel rendered="#{visualizacaoFaces.midia.arquivoEmDisco}">   
-	            <div class="icone-save">
-	            	<h:commandLink action="#{visualizacaoFaces.download}">
-	            		<img src="#{facesContext.externalContext.requestContextPath}/images/save.png" border="0"/>
-	            		<p:fileDownload value="#{visualizacaoFaces.file}"/>
-	            	</h:commandLink>
-		        </div>
-	            </p:outputPanel>
-	            <p:outputPanel rendered="#{visualizacaoFaces.midia.arquivoEmDisco}">   
-	            <div class="icone-save">
-	            	<h:commandLink action="#{visualizacaoFaces.download}">
-	            		<img src="#{facesContext.externalContext.requestContextPath}/images/save.png" border="0"/>
-	            		<p:fileDownload value="#{visualizacaoFaces.file}"/>
-	            	</h:commandLink>
-		        </div>
-	            </p:outputPanel>
-	            <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
-	            <div class="icone-save">
-	            	<h:commandLink action="#{visualizacaoFaces.download}">
-	            		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
-	            	</h:commandLink>
-		        </div>
-	            </p:outputPanel>
+            <div class="icone-save">
+            	<h:commandLink action="#{visualizacaoFaces.download}">
+            		<img src="#{facesContext.externalContext.requestContextPath}/images/save.png" border="0"/>
+            		<p:fileDownload value="#{visualizacaoFaces.file}"/>
+            	</h:commandLink>
+	        </div>
+            </p:outputPanel>
+            <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
+            <div class="icone-save">
+            	<h:commandLink>
+            		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
+            	</h:commandLink>
+	        </div>
+            </p:outputPanel>
 	      </div>
 	    </div>
 	    
-	  </div>
-  
+	</div>
   </p:outputPanel>
   
   <p:outputPanel rendered="#{visualizacaoFaces.midia.tipoMidia.id==4}">
@@ -367,7 +380,7 @@
         </p:outputPanel>
         <p:outputPanel rendered="#{!visualizacaoFaces.midia.arquivoEmDisco}">   
            <div class="icone-save">
-           	<h:commandLink action="#{visualizacaoFaces.download}">
+           	<h:commandLink>
            		<img src="#{facesContext.externalContext.requestContextPath}/images/arquivonaoencontrado.png" border="0"/>
            	</h:commandLink>
         	</div>
