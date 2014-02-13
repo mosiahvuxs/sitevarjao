@@ -1188,9 +1188,18 @@ label{
 	z-index: 9999;
 }
 
+.modal-impresso{
+	width: 25%;
+	height: 60%;
+	top: 20%;
+	overflow:auto;"
+}
+
 .modal-web{
 	width: 25%;
+	height: 60%;
 	top: 20%;
+	overflow:auto;"
 }
 
 .mask{

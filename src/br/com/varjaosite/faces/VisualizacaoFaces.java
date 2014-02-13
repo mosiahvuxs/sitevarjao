@@ -65,7 +65,7 @@ public class VisualizacaoFaces extends TSMainFaces {
 		}
 	}
 
-	private void carregar() throws InvalidKeyException, UnsupportedEncodingException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
+	private String carregar() throws InvalidKeyException, UnsupportedEncodingException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException {
 
 		String clienteId = TSFacesUtil.getRequestParameter("cliente");
 
@@ -85,7 +85,7 @@ public class VisualizacaoFaces extends TSMainFaces {
 
 				if (!cliente.getFlagExigeSenha()) {
 
-					if (!this.carregaMidia(Long.valueOf(midiaIdDescriptografado))) {
+					if (!this.carregaMidia(Long.valueOf(midiaIdDescriptografado), cliente)) {
 
 						this.redirecionarIndex();
 
@@ -121,14 +121,18 @@ public class VisualizacaoFaces extends TSMainFaces {
 			this.redirecionarIndex();
 
 		}
+
+		return null;
 	}
 
-	private boolean carregaMidia(Long midiaId) {
+	private boolean carregaMidia(Long midiaId, Cliente cliente) {
 
 		this.midia = new MidiaDAO().obter(new Midia(midiaId));
 
 		if (!TSUtil.isEmpty(this.midia) && !TSUtil.isEmpty(this.midia.getId())) {
-
+			
+			this.getMidia().setCliente(cliente);
+			
 			this.tratarArquivo();
 
 			return true;

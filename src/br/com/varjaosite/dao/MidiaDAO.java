@@ -246,12 +246,12 @@ public class MidiaDAO {
 
 		if (!TSUtil.isEmpty(model.getMidia().getTitulo())) {
 
-			broker.set(model.getMidia().getTitulo());
+			broker.set("%" + model.getMidia().getTitulo() + "%");
 		}
 
 		if (!TSUtil.isEmpty(model.getMidia().getChamada())) {
 
-			broker.set(model.getMidia().getChamada());
+			broker.set("%" + model.getMidia().getChamada() + "%");
 		}
 
 		broker.set(model.getDataEnvio());
