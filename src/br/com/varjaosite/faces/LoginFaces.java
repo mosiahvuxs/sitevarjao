@@ -100,14 +100,14 @@ public class LoginFaces extends TSMainFaces {
 
 		if (TSUtil.isEmpty(this.cliente.getAutenticacao().getLogin())) {
 
-			super.addErrorMessage("Login: Campo Obrigatório");
+			super.addErrorMessage("Login: obrigatório.");
 
 			validado = false;
 		}
 
 		if (TSUtil.isEmpty(this.cliente.getAutenticacao().getSenha())) {
 
-			super.addErrorMessage("Senha: Campo Obrigatório");
+			super.addErrorMessage("Senha: obrigatório.");
 
 			validado = false;
 		}

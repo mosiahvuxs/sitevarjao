@@ -82,7 +82,7 @@ public class ContatoFaces extends TSMainFaces {
 
 			super.addInfoMessage("Mensagem enviada com sucesso.");
 
-			TSEmailUtil.enviar(this.getEmail(), "Contato - Varjão", this.mensagem, Constantes.EMAIL_CONTATO, "text/plain", "127.0.0.1");
+			TSEmailUtil.enviar(this.getEmail(), "Contato - Varjão", this.mensagem, Constantes.EMAIL_CONTATO, "text/plain", Constantes.SMTP);
 
 		}
 

@@ -32,7 +32,8 @@ public final class Constantes {
 
 	public static final String SENHA = "Senha: Obrigatório.";
 
-	public static final String SMTP = "mailing.atarde.com.br";
+	//public static final String SMTP = "mailing.atarde.com.br";
+	public static final String SMTP = "127.0.0.1";
 
 	public static final String CLIPPING = "clipping";
 
