@@ -142,7 +142,7 @@ public class ClippingFaces extends TSMainFaces {
 
 				validado = false;
 
-				super.addErrorMessage("Data inicial e final devem estar no período de 30 dias.");
+				super.addErrorMessage("Para realizar a operação as datas devem abranger o período de 30 dias.");
 			
 			} else {
 
