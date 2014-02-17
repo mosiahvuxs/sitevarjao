@@ -138,9 +138,19 @@ public class ClippingFaces extends TSMainFaces {
 
 		if (validado) {
 
-			this.getMidiaEnvio().setDataEnvio(TSParseUtil.stringToDate(this.getDataInicial(), TSDateUtil.DD_MM_YYYY));
+			if (TSDateUtil.diferencaDias(this.dataInicial, this.dataFinal, TSDateUtil.DD_MM_YYYY) > 30l) {
 
-			this.getMidiaEnvio().setDataEnvioFinal(TSParseUtil.stringToDate(this.getDataFinal(), TSDateUtil.DD_MM_YYYY));
+				validado = false;
+
+				super.addErrorMessage("Data inicial e final devem estar no período de 30 dias.");
+			
+			} else {
+
+				this.getMidiaEnvio().setDataEnvio(TSParseUtil.stringToDate(this.getDataInicial(), TSDateUtil.DD_MM_YYYY));
+
+				this.getMidiaEnvio().setDataEnvioFinal(TSParseUtil.stringToDate(this.getDataFinal(), TSDateUtil.DD_MM_YYYY));
+
+			}
 
 		}
 
